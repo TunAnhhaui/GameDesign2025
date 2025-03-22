@@ -1,0 +1,38 @@
+# Thư mục build của Unity
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]istPublic/
+
+# Thư mục của các file tạm thời
+[Tt]emp/
+[Tt]mp/
+
+# Thư mục của các tài nguyên tạm
+[Ll]ibrary/
+[Ll]ock/
+
+# Các file cấu hình của IDE
+.vscode/
+.idea/
+
+# Các file của hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Các file của Unity (có thể bao gồm cả build, nhật ký và các file phụ trợ)
+*.bak
+*.swp
+*.suo
+*.user
+*.userprefs
+
+# Thư mục các bản backup của Unity
+# Bạn có thể thêm vào nếu sử dụng các hệ thống quản lý phiên bản của Unity
+# # Uncomment if you have your version control systems
+# .unitypackage
+# .asset
+
+# Các file build cho các nền tảng khác nhau
+build/
+Build/
