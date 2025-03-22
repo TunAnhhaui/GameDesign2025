@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed; // Tốc độ di chuyển
     [SerializeField] private float jumpForce; // Chiều cao nhảy
 
+    private int facingDir = 1;
+    private bool facingRight = true;
     private float xInput;
 
     // Start is called before the first frame update
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
         Movement(); // Di chuyển
 
         CheckInput();
+
+        FlipController();
 
         AnimatorController();
 
@@ -62,4 +66,20 @@ public class Player : MonoBehaviour
 
         anim.SetBool("isMoving", isMoving);
     }
+
+    private void Flip()
+    {
+        facingDir = facingDir * -1;
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
+    }
+
+    private void FlipController()
+    {
+        if (rb.velocity.x > 0 && !facingRight)
+            Flip();
+        else if (rb.velocity.x < 0 && facingRight)
+            Flip();
+    }
+
 }
