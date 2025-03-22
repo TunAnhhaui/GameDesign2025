@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     // private để ẩn thuộc tính set bên unity
     // Muộn hiện cái nào thì dùng SerializeField
     private Rigidbody2D rb;
+    private Animator anim;
 
     [SerializeField] private float moveSpeed; // Tốc độ di chuyển
     [SerializeField] private float jumpForce; // Chiều cao nhảy
@@ -20,20 +21,45 @@ public class Player : MonoBehaviour
         //rb.velocity = new Vector2(0, 10); // Nhảy lên
 
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Movement(); // Di chuyển
 
+        CheckInput();
+
+        AnimatorController();
+
+    }
+
+    private void Movement()
+    {
+        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+    }
+
+    private void CheckInput()
+    {
         xInput = Input.GetAxisRaw("Horizontal"); // Set giá trị theo keydown: a trừ dần, d tăng dần
 
-        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y); // Di chuyển
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // nhảy
+            Jump();// nhảy
         }
+    }
 
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    private void AnimatorController()
+    {
+        bool isMoving = rb.velocity.x != 0;
+
+        anim.SetBool("isMoving", isMoving);
     }
 }
