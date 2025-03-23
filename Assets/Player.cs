@@ -16,6 +16,14 @@ public class Player : MonoBehaviour
 
     private int facingDir = 1;
     private bool facingRight = true;
+
+    [Header("Dash info")]
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDuration;
+    private float dashTime;
+    [SerializeField] private float dashCooldown;
+    private float dashCooldownTimer;
+
     [Header("Collision Info")]
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask whatIsGround;
@@ -35,6 +43,10 @@ public class Player : MonoBehaviour
 
         CollisionChecks();
 
+        dashTime -= Time.deltaTime;
+        dashCooldownTimer -= Time.deltaTime;
+
+
         FlipController();
 
         AnimatorController();
@@ -48,7 +60,14 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        if (dashTime > 0)
+        {
+            rb.velocity = new Vector2(xInput * dashSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        }
     }
 
     private void CheckInput()
@@ -59,6 +78,21 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();// nhảy
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            DashAbility();
+        }
+
+    }
+
+    private void DashAbility()
+    {
+        if (dashCooldownTimer < 0)
+        {
+            dashCooldownTimer = dashCooldown;
+            dashTime = dashDuration;
         }
     }
 
@@ -78,6 +112,7 @@ public class Player : MonoBehaviour
 
         anim.SetBool("isMoving", isMoving);
         anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isDashing", dashTime > 0);
     }
 
     private void Flip()
