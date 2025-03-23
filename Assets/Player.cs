@@ -12,17 +12,24 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed; // Tốc độ di chuyển
     [SerializeField] private float jumpForce; // Chiều cao nhảy
 
-    private float xInput;
-
-    private int facingDir = 1;
-    private bool facingRight = true;
-
     [Header("Dash info")]
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
     private float dashTime;
+
     [SerializeField] private float dashCooldown;
     private float dashCooldownTimer;
+
+    [Header("Attack info")]
+    [SerializeField] private float comboTime = .3f;
+    private float comboTimeWindow; 
+    private bool isAttacking;
+    private int comboCounter;
+
+    private float xInput;
+
+    private int facingDir = 1;
+    private bool facingRight = true;
 
     [Header("Collision Info")]
     [SerializeField] private float groundCheckDistance;
@@ -46,10 +53,24 @@ public class Player : MonoBehaviour
         dashTime -= Time.deltaTime;
         dashCooldownTimer -= Time.deltaTime;
 
+        comboTimeWindow -= Time.deltaTime;
+
 
         FlipController();
 
         AnimatorController();
+
+    }
+
+    public void AttackOver()
+    {
+        isAttacking = false;
+
+        comboCounter++;
+
+        if(comboCounter > 2)
+            comboCounter = 0;
+
 
     }
 
@@ -60,9 +81,13 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        if (dashTime > 0)
+        if (isAttacking)
         {
-            rb.velocity = new Vector2(xInput * dashSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(0, 0);
+        }
+        else if (dashTime > 0)
+        {
+            rb.velocity = new Vector2(facingDir * dashSpeed, rb.velocity.y);
         }
         else
         {
@@ -74,6 +99,10 @@ public class Player : MonoBehaviour
     {
         xInput = Input.GetAxisRaw("Horizontal"); // Set giá trị theo keydown: a trừ dần, d tăng dần
 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            StartAttackEvent();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -85,6 +114,18 @@ public class Player : MonoBehaviour
             DashAbility();
         }
 
+    }
+
+    private void StartAttackEvent()
+    {
+        if (!isGrounded)
+            return;
+
+        if (comboTimeWindow < 0)
+            comboCounter = 0;
+
+        isAttacking = true;
+        comboTimeWindow = comboTime;
     }
 
     private void DashAbility()
@@ -113,6 +154,8 @@ public class Player : MonoBehaviour
         anim.SetBool("isMoving", isMoving);
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("isDashing", dashTime > 0);
+        anim.SetBool("isAttacking", isAttacking);
+        anim.SetInteger("comboCounter", comboCounter);
     }
 
     private void Flip()
