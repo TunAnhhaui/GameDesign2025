@@ -60,8 +60,8 @@
   <ItemGroup>
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\PlayerAnimationEvents.cs" />
-    <Compile Include="Assets\Shape.cs" />
-    <Compile Include="Assets\Cirle.cs" />
+    <Compile Include="Assets\Entity.cs" />
+    <Compile Include="Assets\Enimy_Skeleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

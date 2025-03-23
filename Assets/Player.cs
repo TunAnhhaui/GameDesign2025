@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    // private để ẩn thuộc tính set bên unity
-    // Muộn hiện cái nào thì dùng SerializeField
-    private Rigidbody2D rb;
-    private Animator anim;
 
+    [Header("Move info")]
     [SerializeField] private float moveSpeed; // Tốc độ di chuyển
     [SerializeField] private float jumpForce; // Chiều cao nhảy
 
@@ -28,27 +25,19 @@ public class Player : MonoBehaviour
 
     private float xInput;
 
-    private int facingDir = 1;
-    private bool facingRight = true;
 
-    [Header("Collision Info")]
-    [SerializeField] private float groundCheckDistance;
-    [SerializeField] private LayerMask whatIsGround;
-    private bool isGrounded;
-
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
+        base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         Movement(); // Di chuyển
 
         CheckInput();
-
-        CollisionChecks();
 
         dashTime -= Time.deltaTime;
         dashCooldownTimer -= Time.deltaTime;
@@ -72,11 +61,6 @@ public class Player : MonoBehaviour
             comboCounter = 0;
 
 
-    }
-
-    private void CollisionChecks()
-    {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
     }
 
     private void Movement()
@@ -158,12 +142,7 @@ public class Player : MonoBehaviour
         anim.SetInteger("comboCounter", comboCounter);
     }
 
-    private void Flip()
-    {
-        facingDir = facingDir * -1;
-        facingRight = !facingRight;
-        transform.Rotate(0, 180, 0);
-    }
+
 
     private void FlipController()
     {
@@ -173,9 +152,10 @@ public class Player : MonoBehaviour
             Flip();
     }
 
-    private void OnDrawGizmos()
+    protected override void CollisionChecks()
     {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
+        base.CollisionChecks();
     }
+
 
 }
