@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|d:\\appcode\\unity\\gameproject\\rqggamehaui2025\\assets\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|d:\\appcode\\unity\\gameproject\\rqggamehaui2025\\assets\\shape.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|solutionrelative:assets\\shape.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|d:\\appcode\\unity\\gameproject\\rqggamehaui2025\\assets\\cirle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|solutionrelative:assets\\cirle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\assets\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|solutionrelative:assets\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\assets\\playeranimationevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A97FA2B-5D88-0B9D-2C20-B3AC17F016E2}|Assembly-CSharp.csproj|solutionrelative:assets\\playeranimationevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cirle.cs",
+              "DocumentMoniker": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\Cirle.cs",
+              "RelativeDocumentMoniker": "Assets\\Cirle.cs",
+              "ToolTip": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\Cirle.cs",
+              "RelativeToolTip": "Assets\\Cirle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T06:15:28.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Shape.cs",
+              "DocumentMoniker": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\Shape.cs",
+              "RelativeDocumentMoniker": "Assets\\Shape.cs",
+              "ToolTip": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\Shape.cs",
+              "RelativeToolTip": "Assets\\Shape.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T06:14:20.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerAnimationEvents.cs",
+              "DocumentMoniker": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\PlayerAnimationEvents.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerAnimationEvents.cs",
+              "ToolTip": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\PlayerAnimationEvents.cs",
+              "RelativeToolTip": "Assets\\PlayerAnimationEvents.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T05:26:58.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\Player.cs",
               "RelativeDocumentMoniker": "Assets\\Player.cs",
               "ToolTip": "D:\\AppCode\\Unity\\GameProject\\RqgGameHaui2025\\Assets\\Player.cs",
               "RelativeToolTip": "Assets\\Player.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAMwDYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAswIgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T23:22:09.105Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T23:22:09.105Z"
             }
           ]
         }
