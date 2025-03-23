@@ -12,31 +12,38 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed; // Tốc độ di chuyển
     [SerializeField] private float jumpForce; // Chiều cao nhảy
 
-    private int facingDir = 1;
-    private bool facingRight = true;
     private float xInput;
 
-    // Start is called before the first frame update
+    private int facingDir = 1;
+    private bool facingRight = true;
+    [Header("Collision Info")]
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask whatIsGround;
+    private bool isGrounded;
+
     void Start()
     {
-        //rb.velocity = new Vector2(5, rb.velocity.y); // Di chuyển sang phải là dương. sang trái là âm
-        //rb.velocity = new Vector2(0, 10); // Nhảy lên
-
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Movement(); // Di chuyển
 
         CheckInput();
 
+        CollisionChecks();
+
         FlipController();
 
         AnimatorController();
 
+    }
+
+    private void CollisionChecks()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
     }
 
     private void Movement()
@@ -57,14 +64,20 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        if (isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
     }
 
     private void AnimatorController()
     {
         bool isMoving = rb.velocity.x != 0;
 
+        anim.SetFloat("yVelocity", rb.velocity.y);
+
         anim.SetBool("isMoving", isMoving);
+        anim.SetBool("isGrounded", isGrounded);
     }
 
     private void Flip()
@@ -80,6 +93,11 @@ public class Player : MonoBehaviour
             Flip();
         else if (rb.velocity.x < 0 && facingRight)
             Flip();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
     }
 
 }
